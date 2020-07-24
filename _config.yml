@@ -13,8 +13,8 @@ webrick:
 email: ""
 github: "rehayilmazlar/rehayilmazlar"
 # path to: css/, fonts/, img/ and js/
-assets_path: "/" # i.e. "/assets" 
-statement: "Designed by DeerRIDER, All Rights Reserved"
+assets_path: "/" # i.e. "/assets"
+statement: "Designed by rehayilmazlar, All Rights Reserved"
 # default max toc levels: 1 - 6 (h1 - h6)
 toc_level: 3
 # texts randomly displayed in background
