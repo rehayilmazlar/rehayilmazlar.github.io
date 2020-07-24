@@ -4,22 +4,22 @@ body{
 
 }
 ul {
-  border: 1px solid #555;
-  width: 110px;
   margin: 0;
   padding: 0;
   background-color: black;
   font-weight: bold;
-  position: absolute;
+  position: relative;
   left: 46%;
-  top: 4.4%;
-
+  top: 0;
+  max-width:100%;
 }
 
 li {
 
   display: block;
   float: left;
+  background-color: #00ff00;
+  color: black;
 }
 
 li a {
@@ -31,30 +31,28 @@ li a {
 }
 
 li a:hover {
-  background-color: #00ff00;
-  color: black;
+  background-color: black;
+  color: #00ff00;
 }
 
 .matrix{
   background-color: black;
-  width: 1400px;
-  height: 600px;
+  width: 85%;
+  height: 85%;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius:  0 50px 0 50px;
+  left:7.5%;
+  top: 7.5%;
+  border-radius:  0 0 50px 50px;
   border: 2px green dotted;
+  max-width:100%;
 }
   p {
-  padding-left: 15px;
   color: #00ff00;
   font-family: "Consolas";
   text-shadow: 0 0 4px #00ff00;
   font-size: 18px;
   white-space: nowrap;
-  width: 100%;
-  animation: typing 4s steps(10, end);
+  animation: typingtwo 3s steps(60, end);
   overflow: hidden;
 }
 @keyframes typing {
@@ -62,41 +60,17 @@ li a:hover {
     width: 0;
   }
 }
-p:nth-child(1) {
-  animation: typingtwo 1s steps(60, end);
-}
-p:nth-child(2) {
+
+p:nth-child(4) {
   animation: typingtwo 6s steps(60, end);
 }
-p:nth-child(3) {
+p:nth-child(5) {
+  animation: typingtwo 9s steps(60, end);
+}
+p:nth-child(6) {
   animation: typingtwo 12s steps(60, end);
 }
-p:nth-child(4) {
-  animation: typingtwo 18s steps(60, end);
-}
 @keyframes typingtwo {
-  0%{
-    width: 0;
-  }
-    50% {
-      width: 0;
-    }
-  100% {
-    width: 100%;
-  }
-}
-@keyframes typingthree {
-  0%{
-    width: 0;
-  }
-    50% {
-      width: 0;
-    }
-  100% {
-    width: 100%;
-  }
-}
-@keyframes typingfour {
   0%{
     width: 0;
   }
