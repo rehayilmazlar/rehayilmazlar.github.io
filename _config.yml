@@ -2,7 +2,7 @@
 title: TEST
 owner: "reha"
 url: "https://rehayilmazlar.github.io"
-baseurl: "/rehayilmazlar"
+baseurl: "/"
 permalink: /:title/
 description: ""
 markdown: kramdown
@@ -10,10 +10,10 @@ webrick:
   headers:
     Access-Control-Allow-Origin: "*"
 ## Global Variables
-email: "akiritsu@outlook.com"
+email: ""
 github: "rehayilmazlar/rehayilmazlar"
 # path to: css/, fonts/, img/ and js/
-assets_path: "/assets" # i.e. "/assets" 
+assets_path: "/" # i.e. "/assets" 
 statement: "Designed by DeerRIDER, All Rights Reserved"
 # default max toc levels: 1 - 6 (h1 - h6)
 toc_level: 3
