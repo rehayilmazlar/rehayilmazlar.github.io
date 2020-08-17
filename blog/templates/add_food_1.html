@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+<script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<!--Custom add menu-->
+<script>$(document).ready(function() {
+  
+  
+    $("#hiddenRow").hide();
+    $("#toggleCheck").click(function() {
+        
+        $("#hiddenRow").toggle();
+      
+    })
+    
+  });</script>
+
+<!--Show/hide editor-->
+<script>$(document).ready(function() {
+  $("#editor").hide();
+  $("#showEditor").click(function() {
+    
+      $("#editor").toggle();
+    
+  })
+  
+});</script>
+
+<form method="POST">
+  <h2>Food name</h2>
+
+  <input name="food_name" type="text" method="post" placeholder="Enter food name..." style="float:left;padding-left:5px" required>
+  <button action="" class="btn btn-success" value = "submit"  method="post" style="float:inline-start;padding:2px 4px 2px 4px;margin-left:2%">Add</button>
+</form>
+{% with food_exists = get_flashed_messages(category_filter=["danger"]) %}
+  {% if food_exists %}
+
+    {% for food in food_exists %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{food}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endblock body %}

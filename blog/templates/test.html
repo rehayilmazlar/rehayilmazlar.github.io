@@ -1,0 +1,230 @@
+{% extends "layout.html" %}
+{% block body %}
+<script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<!--Custom add menu-->
+<script>$(document).ready(function() {
+  
+  
+    $("#hiddenRow").hide();
+    $("#toggleCheck").click(function() {
+        
+        $("#hiddenRow").toggle();
+      
+    })
+    
+  });</script>
+
+<!--Show/hide editor-->
+<script>$(document).ready(function() {
+  $("#editor").hide();
+  $("#showEditor").click(function() {
+    
+      $("#editor").toggle();
+    
+  })
+  
+});</script>
+
+<form method="POST" id="form1">
+{% if name %}
+<h2 style="float:left;">{{name}}</h2><a href="edit_food.html" class="btn btn-dark" role="button" style="float:right;padding:2px 4px 2px 4px;margin-top:1%;;">Edit</a><br>
+{% else %}
+<h2>Food name</h2>
+
+    <input name="food_name" type="text" method="post" placeholder="Enter food name..." style="float:left;padding-left:5px" required>
+    <button action="" class="btn btn-success" value = "submit" name = "submit" method="post" style="float:inline-start;padding:2px 4px 2px 4px;margin-left:2%">Add</button>
+</form>
+{% endif %}
+<hr style="background-color:#ffffff;">
+{% with food_exists = get_flashed_messages(category_filter=["danger"]) %}
+  {% if food_exists %}
+
+    {% for food in food_exists %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{food}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<h4>Added Ingredients</h4>
+<hr style="background-color:#8d2a78;">
+<table id="myTable" class="table table-hover table-dark"  style="table-layout: fixed;">
+    <thead>
+      <tr>
+        <th scope="col" style="color:steelblue;width:240px"></th>
+        <th scope="col" style="color:steelblue;width:200px">Quantity</th>
+        <th scope="col" style="color:steelblue;width:200px">Measure</th>
+        <th scope="col" style="color:steelblue;width:200px">Ingredient</th>
+        <th scope="col" style="color:steelblue;width:100px"></th>
+        <th scope="col" style="color:steelblue"></th>
+        <th scope="col" style="color:steelblue"></th>
+    </thead>
+
+<table class="table table-hover table-dark"  style="table-layout: fixed;">
+  <h4>Ingredients</h4>
+<thead>
+  <tr>
+    <th scope="col" style="color:steelblue;width:240px"></th>
+    <th scope="col" style="color:steelblue;width:200px">Quantity</th>
+    <th scope="col" style="color:steelblue;width:200px">Measure</th>
+    <th scope="col" style="color:steelblue;width:200px">Ingredient</th>
+    <th scope="col" style="color:steelblue;width:100px"></th>
+    <th scope="col" style="color:steelblue"></th>
+    <th scope="col" style="color:steelblue"></th>
+</thead>
+<tbody>    
+
+<tr>
+
+    <th scope="row"></th>
+    
+    <td> 
+        <select value="qty" id="qty" class="reha_button reha_button1" type="button">
+        {% for q in qty  %}
+        <option>{{q.quantity}}</option>
+        {% endfor %}
+        </td>
+    <td>
+        <select value="msr" id="msr" class="reha_button reha_button1" type="button">
+            {% for m in msr  %}
+            <option>{{m.measure}}</option>
+            {% endfor %}
+            </td>
+        <td> 
+            <select value="ing" id="ing" class="reha_button reha_button1" type="button">
+            {% for i in ing  %}
+            <option>{{i.ingredient}}</option>
+            {% endfor %}
+         </select></td>  
+         <td></td>
+    <td><a href="#" onclick="addRow()" class="btn btn-warning" style="float:right;width:fit-content;padding:2px 7px 2px 7px;margin-right:-5%">Add</a></td>
+
+    <td><a href="#" id="toggleCheck" class="btn btn-dark" style="float:right;width:fit-content;padding:2px 7px 2px 7px;">Custom</a></td>
+</tr>
+<form method="POST" id="form2">
+    <tr id="hiddenRow">
+        <th scope="row">Enter amounts</th>
+    
+        <td><input name="qty_form" style="width: 70%;" class="form-control form-control-sm" type="text" placeholder="New amount"></td>
+        <td><input name="msr_form" class="form-control form-control-sm" type="text" placeholder="New measure"></td>
+        <td><input name="ing_form" style="width: 80%;" class="form-control form-control-sm" type="text" placeholder="New ingredient"></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-success" style="float:right;padding:2px 2px 2px 2px" onclick="addRow()">Add</button></td>
+    </tr>
+  </form>
+    
+
+</tbody>
+</table>
+{% with ing_exists = get_flashed_messages(category_filter=["warning"]) %}
+  {% if ing_exists %}
+    {% for ing in ing_exists %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{ing}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form method="POST" id="form3"></form>
+    <h2 style="float: left;">Yemek tarifi</h2><a href="#" class="btn btn-secondary" id="showEditor" style="float:inline-start;padding:2px 4px 2px 4px;margin-left:2%;margin-top:6px;">Show/Hide Editor</a>
+    <br>
+    <hr style="background-color:#38ad9a;">
+    <div class="form-group" id="editor">
+        <textarea name="content"style="height:250px; border-color: white; overflow: auto; resize:vertical;"></textarea>
+    
+  </div>
+  <button class="btn btn-danger" action="add_food.html" value = "submit" name = "submit" method="post" style="float:left;">Save</button>
+</form>
+
+<script>
+  $(document).on("submit", "#form1", function(event){ //infoForm id li form post edildiğinde
+    event.preventDefault();
+    $.ajax({ 
+      type: "POST",             
+      data: new FormData(this),
+      dataType: "json",
+      contentType: false,       
+      cache: false,             
+      processData:false, 
+      success: function(data) {
+        alert(data["result"]); //post sonucunu yazdir
+        console.log(data['data']); //girilen verileri console ekranina yazdır
+      }
+    });
+  });
+  </script>
+  
+
+
+    <script>
+        CKEDITOR.replace("content", {
+            toolbarGroups : [
+                { name: "clipboard", groups: [ "clipboard", "undo" ] },
+                { name: "document", groups: [ "mode", "document", "doctools" ] },
+                { name: "editing", groups: [ "find", "selection", "spellchecker", "editing" ] },
+                { name: "forms", groups: [ "forms" ] },
+
+                { name: "basicstyles", groups: [ "basicstyles", "cleanup" ] },
+                { name: "colors", groups: [ "colors" ] },
+                { name: "paragraph", groups: [ "list", "indent", "blocks", "align", "bidi", "paragraph" ] },
+                { name: "links", groups: [ "links" ] },
+
+                { name: "insert", groups: [ "insert" ] },
+                { name: "styles", groups: [ "styles" ] },
+                { name: "tools", groups: [ "tools" ] },
+                { name: "others", groups: [ "others" ] },
+                { name: "about", groups: [ "about" ] }
+            ],
+        
+            removeButtons : "Source,Save,NewPage,Preview,Templates,Find,Replace,SelectAll,Form,Radio,Checkbox,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,CreateDiv,BidiLtr,BidiRtl,Language,Subscript,Superscript,Link,Unlink,Anchor,Flash,HorizontalRule,PageBreak,Iframe,ShowBlocks,About"
+        });
+    </script>
+
+
+
+
+<!-- tablo ekleme javascript benim düzelttiğim-->
+<script>
+  var id=1;
+  function addRow() {
+    var table = document.getElementById("myTable");
+    var row = table.getElementsByTagName('tr');
+    var row = table.insertRow(row.length);
+    var ing = document.getElementById('ing');
+    var msr = document.getElementById('msr');
+    var qty = document.getElementById('qty');
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+    cell1.innerHTML = '';
+    cell2.innerHTML = qty.value;
+    cell3.innerHTML = msr.value;
+    cell4.innerHTML = ing.value;
+    cell5.innerHTML = '';
+    cell6.innerHTML = '';
+    cell7.innerHTML = "<a href='#' onclick='deleteRow(this)' id='delete' class='btn btn-danger' style='float:right;padding:2px 7px 2px 7px'>Delete</a><input type='text' name="+"'"+ id+"'" + "value= '" +qty.value +"'" +"/>"+"<input type='text' name="+"'"+ (id+1)+ "'" + "value='" + msr.value + "'"+"/>"+"<input type='text' name="+"'"+ (id+2)+"'" + "value='" + ing.value + "'"+"/>"
+    id +=3;
+  }
+  
+  function deleteRow(toBeDeletedRow)
+  {
+    id -=3;
+    var p=toBeDeletedRow.parentNode.parentNode;
+    p.parentNode.removeChild(p);
+  }
+
+  </script>
+{% endblock body %}

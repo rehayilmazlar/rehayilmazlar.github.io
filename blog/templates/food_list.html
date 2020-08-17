@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+<!--Confirmation dialogue js-->
+
+
+{% block body %}
+
+<h3 style="color:#853563;font-family: monospace;float:left">Food List</h3><a href="/add_food_1/{{id}}" class="btn btn-warning" role="button" style="float:right;">Add New Food</a>
+<br><hr style="background-color:#af7635;position:relative">
+{% include "includes/messages.html" %}
+<div>
+  {% if food %}
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col" style="color:steelblue;">#</th>
+        <th scope="col" style="color:steelblue;">Food</th>
+        <th scope="col" style="color:steelblue;">Added By</th>
+        <th scope="col" style="color:steelblue;">Date</th>
+        <th scope="col" style="color:steelblue;"></th>
+        <th scope="col" style="color:steelblue;"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    
+      {% for i in food  %}
+    <tr>
+      <td>{{i.id}}</td>
+      <td><a href="/food/{{i.id}}">{{i.name}}</a></td>
+      <td>{{i.author}}</td>
+      <td>{{i.time}}</td>
+      <td></td>
+      <td><a href="#" class="btn btn-danger" data-target="#my_modal" data-toggle="modal" data-id="/delete_food/{{i.id}}" id ="{{i.id}}" role="button" style="float:right;margin-left:3%">Delete</a>
+      <a href="/add_food/{{i.id}}" class="btn btn-dark" role="button" style="float:right;">Update</a></td>
+    </tr>
+    <!--delet_food/id url'sini Yes butonuna yollayan  js-->
+    <script type="text/javascript">
+      $(function () {
+          $("#{{i.id}}").click(function () {
+              var my_id_value = $(this).data('id');
+              console.log(my_id_value)
+              $("#delete").attr("href", my_id_value)
+          })
+      });
+    </script>
+      {% endfor %}
+      {% else %}
+      <h2>No food to show!</h2>
+      {% endif %}
+    
+</div>
+
+  <!-- The Modal -->
+<div class="modal fade" id="my_modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    
+      <!-- Modal body -->
+      <div class="modal-body" style="color:white; background-color:#222">
+        Are you sure you want to delete?
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer" style="color:white; background-color:#222">
+        <a href="#" type="button"  id="delete" class="btn btn-danger" data-dismiss="/food_list">Yes</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+{% endblock body %}

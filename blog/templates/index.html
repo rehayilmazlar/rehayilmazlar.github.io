@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="text-center thead-dark">
+    {% include "includes/messages.html" %}
+    {% if session["loggedin"]  %}
+    <h3>Welcome to my blog!</h3><br><br>
+    <h2 style="margin-top: 20%;">Your username is: <span style="color:indianred;">{{session["username"]}}</span></h2>
+    {% else %}
+    <h3>Welcome to my blog! Not logged in!</h3>
+    <p style="margin-top: 20%;">You can <a href="/register">register</a> or <a href="/login">login</a> to see further.</p>
+    {% endif %}
+</div>
+
+{% endblock body %}
