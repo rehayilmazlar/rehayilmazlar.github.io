@@ -52,29 +52,23 @@ p {
     text-shadow: 0 0 4px #00ff00;
     font-size: 18px;
     white-space: nowrap;
-    animation: typingtwo 3s steps(60, end);
+    animation: typingAnimation 3s steps(60, end);
     overflow: hidden;
 }
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-}
-
 p:nth-child(5) {
-    animation: typingtwo 6s steps(60, end);
+    animation: typingAnimation 6s steps(60, end);
 }
 
 p:nth-child(6) {
-    animation: typingtwo 9s steps(60, end);
+    animation: typingAnimation 9s steps(60, end);
 }
 
 p:nth-child(7) {
-    animation: typingtwo 12s steps(60, end);
+    animation: typingAnimation 12s steps(60, end);
 }
 
-@keyframes typingtwo {
+@keyframes typingAnimation {
     0% {
         width: 0;
     }
