@@ -1,118 +1,116 @@
-body{
-  background-image: url("giphy.gif");
+body {
+    background-image: url("giphy.gif");
 }
 
 a {
-  text-decoration: none;
-  font-weight: bold;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 a:hover {
-  padding: 10px;
-  background-color: #00ff00;
-  color: black;
+    padding: 10px;
+    background-color: #00ff00;
+    color: black;
 }
 
 .first {
-  position: absolute;
-  padding: 10px;
-  margin:1px;
-  right: 50%;
-  border: solid black 5px;
-  background-color: black;
-  color: green;
+    position: absolute;
+    padding: 10px;
+    margin: 1px;
+    right: 50%;
+    border: solid black 5px;
+    background-color: black;
+    color: green;
 }
 
 .second {
-  position: absolute;
-  padding: 10px;
-  margin:1px;
-  left: 50%;
-  border: solid black 5px;
-  background-color: black;
-  color: green;
+    position: absolute;
+    padding: 10px;
+    margin: 1px;
+    left: 50%;
+    border: solid black 5px;
+    background-color: black;
+    color: green;
 }
 
-
-
-.matrix{
-  background-color: black;
-  width: 85%;
-  height: 85%;
-  position: absolute;
-  left:7.5%;
-  top: 7.5%;
-  border-radius:  0 0 50px 50px;
-  border: 2px green dotted;
-  max-width:100%;
+.matrix {
+    background-color: black;
+    width: 85%;
+    height: 85%;
+    position: absolute;
+    left: 7.5%;
+    top: 7.5%;
+    border-radius: 0 0 50px 50px;
+    border: 2px green dotted;
+    max-width: 100%;
 }
-  p {
-  color: #00ff00;
-  font-family: "Consolas";
-  text-shadow: 0 0 4px #00ff00;
-  font-size: 18px;
-  white-space: nowrap;
-  animation: typingtwo 3s steps(60, end);
-  overflow: hidden;
+
+p {
+    color: #00ff00;
+    font-family: "Consolas";
+    text-shadow: 0 0 4px #00ff00;
+    font-size: 18px;
+    white-space: nowrap;
+    animation: typingtwo 3s steps(60, end);
+    overflow: hidden;
 }
+
 @keyframes typing {
-  from{
-    width: 0;
-  }
+    from {
+        width: 0;
+    }
 }
 
 p:nth-child(5) {
-  animation: typingtwo 6s steps(60, end);
+    animation: typingtwo 6s steps(60, end);
 }
-p:nth-child(6) {
-  animation: typingtwo 9s steps(60, end);
-}
-p:nth-child(7) {
-  animation: typingtwo 12s steps(60, end);
-}
-@keyframes typingtwo {
-  0%{
-    width: 0;
-  }
-    50% {
-      width: 0;
-    }
-  100% {
-    width: 100%;
-  }
-}
-.cursor {
-  animation: blink .9s infinite;
-}
-@keyframes blink {
-  to{
-    opacity: 0;
-  }
 
+p:nth-child(6) {
+    animation: typingtwo 9s steps(60, end);
+}
+
+p:nth-child(7) {
+    animation: typingtwo 12s steps(60, end);
+}
+
+@keyframes typingtwo {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.cursor {
+    animation: blink .9s infinite;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0;
+    }
 }
 
 @media only screen and (min-width:960px) {
-	
-  .responsive {
-    width: 960px;
-    height: 400px;
-  }
-  
-  }
-  
-  @media only screen and (min-width:769px) and (max-width:959px) {
-    
-  .responsive {
-    width: 700px;
-  }
-  
-  }
-  
-  @media only screen and (max-width:768px) {
-    
-  .responsive {
-    width: 200px;
-    height: 150px;
-  }
-  
-  }
+    .responsive {
+        width: 960px;
+        height: 400px;
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:959px) {
+    .responsive {
+        width: 700px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .responsive {
+        width: 200px;
+        height: 150px;
+    }
+}
