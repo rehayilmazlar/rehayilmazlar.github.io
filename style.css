@@ -1,5 +1,6 @@
 body {
     background-image: url("giphy.gif");
+    padding: 5px;
 }
 
 a {
@@ -40,8 +41,8 @@ a:hover {
     position: absolute;
     left: 7.5%;
     top: 7.5%;
-    border-radius: 0 0 50px 50px;
     border: 2px green dotted;
+    border-radius: 0 0 50px 50px;
     max-width: 100%;
 }
 
